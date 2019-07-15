@@ -3,9 +3,11 @@ import PropTypes from "prop-types";
 import Loader from "../../components/Loader";
 import styled from "styled-components";
 import MovieSlider from "../../components/MovieSlider";
-import { BG_COLOR } from "../../constants/Colors";
+import { BG_COLOR, JIN_COLOR } from "../../constants/Colors";
 import Section from "../../components/Section";
 import MovieItem from "../../components/MovieItem";
+import { LinearGradient } from "expo";
+import { StyleSheet, Text, View} from 'react-native';
 
 const Container = styled.ScrollView`
   background-color: ${BG_COLOR};
@@ -16,6 +18,7 @@ const MoviesPresenter = ({ loading, upcoming, popular, nowPlaying }) =>
     <Loader />
   ) : (
     <Container>
+
       {nowPlaying ? <MovieSlider movies={nowPlaying} /> : null}
       {upcoming ? (
         <Section title="Upcoming Movies">

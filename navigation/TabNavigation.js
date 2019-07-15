@@ -11,11 +11,12 @@ import SearchScreen from "../screens/Search";
 import { BG_COLOR } from "../constants/Colors";
 import TabBarIcon from "../components/TabBarIcon";
 import { createStack } from "./config";
+import MainActivity from "../0707pr/MainActivity"
 
 const TabNavigation = createBottomTabNavigator(
   {
     Movie: {
-      screen: createStack(MoviesScreen, "Movies"),
+      screen: createStack(MoviesScreen, "부글보글"),
       navigationOptions: {
         tabBarIcon: ({ focused }) => (
           <TabBarIcon
@@ -46,6 +47,10 @@ const TabNavigation = createBottomTabNavigator(
           />
         )
       }
+    },
+    MainActivity: {
+      screen: createStack(MainActivity, "MainActivity"),
+        
     }
   },
   {
