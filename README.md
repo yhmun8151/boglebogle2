@@ -1,10 +1,10 @@
-# Nomad Movies
+# BOGLE BOGLE DEMO #1
 
-iOS / Android Movie Discovery App built with React Native.
+iOS / Android Discovery App built with React Native.
 
 ## Screens
 
-- [ ] Movies
-- [ ] TV Shows
-- [ ] Search
-- [ ] Detail
+- [ ] Screen#1
+- [ ] Screen#2
+- [ ] Screen#3
+- [ ] Screen#4
