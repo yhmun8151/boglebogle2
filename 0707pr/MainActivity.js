@@ -7,63 +7,71 @@ import Layout from "../constants/Layout";
 import styled from "styled-components";
 
 const SWIPER_HEIGHT = Layout.height / 3;
-const ScrollView = styled.ScrollView`
-  padding-left: 20px;
+const Container = styled.ScrollView`
+  background-color: ${"red"};
 `;
 
 function MainActivity() {
     return (
-        <LinearGradient style={styles.layoutStyle} colors={["#00C6FB", "#005BEA", "red"]}>
-            <Swiper
-            style={{ height: SWIPER_HEIGHT }}>
-                <View style={{height:SWIPER_HEIGHT, flex:1}}>
-                <Text>Hi this is first layout :)</Text>
-                <Text>Hi this is first layout :)</Text>
-                <Text>Hi this is first layout :)</Text>
-                <Text>Hi this is first layout :)</Text>
-                <Text>Hi this is first layout :)</Text>
+        <Container>
+        <LinearGradient style={{ height : SWIPER_HEIGHT * 6 }} colors={["#00C6FB", "#005BEA", "red"]}>
+            <Swiper style={{ height: SWIPER_HEIGHT }}>
+                 <View >
+                    <Text>Hi this is first layout :)</Text>
+                    <Text>Hi this is first layout :)</Text>
+                    <Text>Hi this is first layout :)</Text>
+                    <Text>Hi this is first layout :)</Text>
+                    <Text>Hi this is first layout :)</Text>
                 </View>
-            <Text>Hi this is first layout :) {Layout.height}</Text>
-            <Text>Hi this is first layout :) {SWIPER_HEIGHT}</Text>
+                <Text>Hi this is first layout :) {Layout.height}</Text>
+                <Text>Hi this is first layout :) {SWIPER_HEIGHT}</Text>
             </Swiper>
-            <ScrollView 
-            style = {{height: Layout.height/2}}>
-            <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-            <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-            <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-            <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-            <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-            <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-            <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-            <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-            <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-            <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-            <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-            <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-            <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-            <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-            <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-            <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-            <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-            <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-            <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-            <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-            <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-            <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-            <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-            <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-            <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-            <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-            <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-            </ScrollView>
-
+            
+            <View style={{ height: SWIPER_HEIGHT * 5 }}>
+                <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+                <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+                <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+                <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+                <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+                <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+                <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+                <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+                <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+                <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+                <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+                <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+                <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+                <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+                <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+                <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+                <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+                <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+                <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+                <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+                <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+                <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+                <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+                <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+                <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+                <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+                <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+            </View>
+            
         </LinearGradient>
+        </Container>
     )
 }
 
 const styles = StyleSheet.create( {
     layoutStyle : {
+        flex: 1
+    },
+    swiperStyle : {
         flex: 1,
+        justifyContent: 'center',
+    },
+    scrollViewStyle : {
+        flex: 1
     }
 })
 
