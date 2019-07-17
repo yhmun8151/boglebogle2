@@ -1,4 +1,4 @@
-import { createStackNavigator } from "react-navigation";
+import { createStackNavigator, createAppContainer } from "react-navigation";
 import { BG_COLOR, WHITE, TINT_COLOR } from "../constants/Colors";
 
 export const headerStyles = {
@@ -22,3 +22,6 @@ export const createStack = (screen, title) =>
       }
     }
   });
+
+  export const createContainer = (screen) =>
+    createAppContainer(screen);

@@ -93,6 +93,7 @@ export default class extends React.Component {
       genres
     } = this.state;
     return (
+      /*
       <DetailPresenter
         id={id}
         posterPhoto={posterPhoto}
@@ -106,6 +107,8 @@ export default class extends React.Component {
         isMovie={isMovie}
         genres={genres}
       />
+      */
+     <View></View>
     );
   }
 }
