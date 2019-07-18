@@ -17,15 +17,13 @@ export default class Activity1 extends Component{
     constructor(props, screenState) {
         super(props)
         this.onPressLearnMore = this.onPressLearnMore.bind(this)
-        alert('Activity constructor : ' + screenState + ' , ' + props)
     }
     onPressLearnMore() {
         Actions.gray()
-        alert('set screenState 1')
     };
 
     render() {
-        alert('Activity1 render is called')
+        console.log('Acivity1 render is called')
         return(
             <Container>
             <LinearGradient style={{ height : SWIPER_HEIGHT * 6 }} colors={["#00C6FB", "#005BEA", "red"]}>
@@ -43,7 +41,7 @@ export default class Activity1 extends Component{
                 
                 <Button
                     onPress={this.onPressLearnMore }
-                    title={"Learn More" }
+                    title={"MoveScreen" }
                     color="#841584"
                     accessibilityLabel="Learn more about this purple button"
                 />

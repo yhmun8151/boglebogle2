@@ -19,7 +19,6 @@ export default class MainActivity extends Component {
     constructor(props) {
         super(props);
         this.state = {screenState:0};
-        alert('this is MainActivity constructor');
     }
     render() {
             //if ( this.state.screenState == 0) {
@@ -29,13 +28,14 @@ export default class MainActivity extends Component {
                             <Scene 
                                 key='scarlet'
                                 component={Activity1}
-                                title="Activity1"
                                 initial={true}
+                                //hideTabBar={true}
+                                hideNavBar={true}
                             />
                             <Scene
                                 key="gray"
                                 component={Activity2}
-                                title="uncompleted"
+                                hideNavBar={true}
                             />
                         </Scene>
                    </Router>

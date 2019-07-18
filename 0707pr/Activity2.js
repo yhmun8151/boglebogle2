@@ -4,32 +4,88 @@ import {LinearGradient} from "expo";
 import Swiper from "react-native-swiper";
 import Layout from "../constants/Layout";
 import styled from "styled-components";
-import MainActivity from "../0707pr/MainActivity"
-import { Actions } from 'react-native-router-flux'
+import { Actions } from 'react-native-router-flux';
+import { movies } from "../api";
+import MovieSlide from "../components/MovieSlide"
 
 
-const SWIPER_HEIGHT = Layout.height / 3;
-const Container = styled.ScrollView`
+const SWIPER_HEIGHT = Layout.height;
+const ScrollView = styled.ScrollView`
   background-color: ${"red"};
 `;
 
-export default class Activity1 extends Component{
+export default class Activity2 extends Component{
     constructor(props, screenState) {
         super(props)
         this.onPressLearnMore = this.onPressLearnMore.bind(this)
-        alert('Activity2 constructor : ' + screenState + ' , ' + props)
     }
+    state = {nowPlaying : null, movie : null}
     onPressLearnMore() {
         Actions.scarlet()
-        alert('set screenState 1')
     };
 
+    async componentWillMount() {
+        let nowPlaying, movie ;
+        movie = new Array;
+        console.log('Activity2 component will mount')
+        try{
+            ({data: {results:nowPlaying}} = await movies.getNowPlaying());
+            //movie = data.filter(movie => movie.backdrop_path !== null).map
+            //console.log(movie)
+            //nowPlaying = await movies.getNowPlaying();
+            console.log(nowPlaying)
+            nowPlaying.filter(movie => movie.backdrop_path !== null).map(
+                data=>{ movie.push(data) }
+            )
+            //console.log(movie)
+        } catch (error) {
+            console.log(error);
+        } finally {
+            this.setState({ nowPlaying,
+                 movie })
+        }
+    }
     render() {
-        alert('Activity1 render is called')
+        console.log('Acivity2 render is called')
+        const {nowPlaying } = this.state;
+        // console.log(nowPlaying)
+        console.log(nowPlaying)
         return(
-            <Container>
-            <LinearGradient style={{ height : SWIPER_HEIGHT * 6 }} colors={["#00C6FB", "#005BEA", "red"]}>
-                <Swiper style={{ height: SWIPER_HEIGHT }}>
+            <ScrollView>
+            <LinearGradient style={{ height : SWIPER_HEIGHT *4/3 }} colors={["yellow", "red"]}>
+                <Swiper 
+                    showsPagination={false}
+                    //autoplay={true}
+                    style={{ height: SWIPER_HEIGHT / 3 }}
+                    autoplayTimeout={3} >
+                    { nowPlaying.filter(movie => movie.backdrop_path !== null).map(
+                        movie => (<View key={movie.id}>
+                            <MovieSlide
+                            overview={movie.overview}
+                            voteAvg={movie.vote_average}
+                            title={movie.title}
+                            id={movie.id}
+                            backgroundPhoto={movie.backdrop_path}
+                            posterPhoto={movie.poster_path}
+                            />
+                        </View>))
+                    }
+                    {/*this.state.movie => (
+                        
+                            <View key={movie.id}>
+                                <MovieSlide
+                                overview={movie.overview}
+                                voteAvg={movie.vote_average}
+                                title={movie.title}
+                                id={movie.id}
+                                backgroundPhoto={movie.backdrop_path}
+                                posterPhoto={movie.poster_path}
+                                />
+                            </View>
+                           
+                    )*/}
+                    
+
                      <View >
                         <Text>Hi this is first layout :)</Text>
                         <Text>Hi this is first layout :)</Text>
@@ -39,6 +95,7 @@ export default class Activity1 extends Component{
                     </View>
                     <Text>Hi this is first layout :) {Layout.height}</Text>
                     <Text>Hi this is first layout :) {SWIPER_HEIGHT}</Text>
+                
                 </Swiper>
                 
                 <Button
@@ -48,7 +105,7 @@ export default class Activity1 extends Component{
                     accessibilityLabel="Learn more about this purple button"
                 />
     
-                <View style={{ height: SWIPER_HEIGHT * 5 }}>
+                <View style={{ height: SWIPER_HEIGHT  }}>
                     <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
                     <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
                     <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
@@ -79,7 +136,7 @@ export default class Activity1 extends Component{
                 </View>
                 
             </LinearGradient>
-            </Container>
+            </ScrollView>
         )
     }
 };
