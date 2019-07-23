@@ -19,7 +19,9 @@ export default class Activity2 extends Component{
         super(props)
         this.onPressLearnMore = this.onPressLearnMore.bind(this)
     }
-    state = {nowPlaying : null, movie : null}
+
+    state = {nowPlaying : null, movie : null, viewStatus : false}
+
     onPressLearnMore() {
         Actions.scarlet()
     };
@@ -33,23 +35,28 @@ export default class Activity2 extends Component{
             //movie = data.filter(movie => movie.backdrop_path !== null).map
             //console.log(movie)
             //nowPlaying = await movies.getNowPlaying();
-            console.log(nowPlaying)
+            //console.log(nowPlaying)
             nowPlaying.filter(movie => movie.backdrop_path !== null).map(
                 data=>{ movie.push(data) }
             )
             //console.log(movie)
+            //console.log(movie)
+            viewStatus = true
         } catch (error) {
             console.log(error);
         } finally {
             this.setState({ nowPlaying,
-                 movie })
+                 movie, viewStatus })
         }
     }
     render() {
         console.log('Acivity2 render is called')
-        const {nowPlaying } = this.state;
+        const {nowPlaying, movie, viewStatus } = this.state;
         // console.log(nowPlaying)
-        console.log(nowPlaying)
+        // console.log('nowPlaying : ' + nowPlaying)
+        // console.log('movie : ' + movie)
+        console.log('\n\n')
+  
         return(
             <ScrollView>
             <LinearGradient style={{ height : SWIPER_HEIGHT *4/3 }} colors={["yellow", "red"]}>
@@ -58,33 +65,25 @@ export default class Activity2 extends Component{
                     //autoplay={true}
                     style={{ height: SWIPER_HEIGHT / 3 }}
                     autoplayTimeout={3} >
-                    { nowPlaying.filter(movie => movie.backdrop_path !== null).map(
-                        movie => (<View key={movie.id}>
-                            <MovieSlide
-                            overview={movie.overview}
-                            voteAvg={movie.vote_average}
-                            title={movie.title}
-                            id={movie.id}
-                            backgroundPhoto={movie.backdrop_path}
-                            posterPhoto={movie.poster_path}
-                            />
-                        </View>))
+                    {
+                        viewStatus == true ? movie.forEach(object => (console.log(object + ' : ' + object.id))) : (console.log('loading'))
                     }
-                    {/*this.state.movie => (
+                    {viewStatus == true ? movie.map((value, index) => (
                         
-                            <View key={movie.id}>
-                                <MovieSlide
-                                overview={movie.overview}
-                                voteAvg={movie.vote_average}
-                                title={movie.title}
-                                id={movie.id}
-                                backgroundPhoto={movie.backdrop_path}
-                                posterPhoto={movie.poster_path}
-                                />
-                            </View>
-                           
-                    )*/}
-                    
+                        
+                        <View key={value.id}>
+                            <MovieSlide
+                            overview={value.overview}
+                            voteAvg={value.vote_average}
+                            title={value.title}
+                            id={value.id}
+                            backgroundPhoto={value.backdrop_path}
+                            posterPhoto={value.poster_path}
+                            />
+                        </View>
+                        
+                        
+                        )) : (console.log('loading..'))}
 
                      <View >
                         <Text>Hi this is first layout :)</Text>

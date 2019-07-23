@@ -4,6 +4,7 @@ import { StatusBar, View, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import MainNavigation from "./navigation/MainNavigation";
 import MainActivity from "./0707pr/MainActivity";
+import { Router, Scene } from 'react-native-router-flux'
 
 export default class App extends React.Component {
   state = {
