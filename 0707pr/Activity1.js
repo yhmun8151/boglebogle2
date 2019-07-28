@@ -19,7 +19,7 @@ export default class Activity1 extends Component{
         this.onPressLearnMore = this.onPressLearnMore.bind(this)
     }
     onPressLearnMore() {
-        Actions.gray()
+        Actions.Activity2()
     };
 
     render() {

@@ -4,8 +4,9 @@ import {LinearGradient} from "expo";
 import Swiper from "react-native-swiper";
 import Layout from "../constants/Layout";
 import styled from "styled-components";
-import Activity1 from "../0707pr/Activity1"
-import Activity2 from "../0707pr/Activity2"
+import Activity1 from './Activity1';
+import Activity2 from './Activity2';
+import Activity3 from './Activity3';
 import { createStack, createContainer } from "../navigation/config";
 import MoviesScreen from "../screens/Movies"
 import { Router, Scene } from 'react-native-router-flux'
@@ -26,15 +27,20 @@ export default class MainActivity extends Component {
                     <Router>
                         <Scene key='root'>
                             <Scene 
-                                key='scarlet'
+                                key='Activity1'
                                 component={Activity1}
                                 initial={true}
                                 //hideTabBar={true}
                                 hideNavBar={true}
                             />
                             <Scene
-                                key="gray"
+                                key="Activity2"
                                 component={Activity2}
+                                hideNavBar={true}
+                            />
+                            <Scene
+                                key="Activity3"
+                                component={Activity3}
                                 hideNavBar={true}
                             />
                         </Scene>

@@ -9,7 +9,7 @@ import { movies } from "../api";
 import MovieSlide from "../components/MovieSlide"
 
 
-const SWIPER_HEIGHT = Layout.height;
+const SWIPER_HEIGHT = Layout.height / 3;
 const ScrollView = styled.ScrollView`
   background-color: ${"red"};
 `;
@@ -23,7 +23,7 @@ export default class Activity2 extends Component{
     state = {nowPlaying : null, movie : null, viewStatus : false}
 
     onPressLearnMore() {
-        Actions.scarlet()
+        Actions.Activity3()
     };
 
     async componentWillMount() {
@@ -32,15 +32,10 @@ export default class Activity2 extends Component{
         console.log('Activity2 component will mount')
         try{
             ({data: {results:nowPlaying}} = await movies.getNowPlaying());
-            //movie = data.filter(movie => movie.backdrop_path !== null).map
-            //console.log(movie)
-            //nowPlaying = await movies.getNowPlaying();
-            //console.log(nowPlaying)
+            console.log(nowPlaying)
             nowPlaying.filter(movie => movie.backdrop_path !== null).map(
                 data=>{ movie.push(data) }
             )
-            //console.log(movie)
-            //console.log(movie)
             viewStatus = true
         } catch (error) {
             console.log(error);
@@ -59,44 +54,29 @@ export default class Activity2 extends Component{
   
         return(
             <ScrollView>
-            <LinearGradient style={{ height : SWIPER_HEIGHT *4/3 }} colors={["yellow", "red"]}>
+            <LinearGradient colors={["yellow", "red"]} style={styles.layoutStyle}>
+                {viewStatus ? (
                 <Swiper 
                     showsPagination={false}
-                    //autoplay={true}
-                    style={{ height: SWIPER_HEIGHT / 3 }}
+                    autoplay={true}
+                    style={{ height: SWIPER_HEIGHT}}
                     autoplayTimeout={3} >
-                    {
-                        viewStatus == true ? movie.forEach(object => (console.log(object + ' : ' + object.id))) : (console.log('loading'))
-                    }
+
                     {viewStatus == true ? movie.map((value, index) => (
-                        
-                        
-                        <View key={value.id}>
+                        <View key={value.id} style={{height: SWIPER_HEIGHT}}>
                             <MovieSlide
-                            overview={value.overview}
-                            voteAvg={value.vote_average}
-                            title={value.title}
+                            overview={value.overview} // 설명
+                            voteAvg={value.vote_average} // 평점
+                            title={value.title} // 제목
                             id={value.id}
-                            backgroundPhoto={value.backdrop_path}
-                            posterPhoto={value.poster_path}
+                            backgroundPhoto={value.backdrop_path} // jpg path
+                            posterPhoto={value.poster_path} // jpg path
                             />
                         </View>
-                        
-                        
                         )) : (console.log('loading..'))}
-
-                     <View >
-                        <Text>Hi this is first layout :)</Text>
-                        <Text>Hi this is first layout :)</Text>
-                        <Text>Hi this is first layout :)</Text>
-                        <Text>Hi this is first layout :)</Text>
-                        <Text>Hi this is first layout :)</Text>
-                    </View>
-                    <Text>Hi this is first layout :) {Layout.height}</Text>
-                    <Text>Hi this is first layout :) {SWIPER_HEIGHT}</Text>
-                
                 </Swiper>
-                
+                ):null }
+
                 <Button
                     onPress={this.onPressLearnMore }
                     title={"Learn More" }
@@ -104,36 +84,21 @@ export default class Activity2 extends Component{
                     accessibilityLabel="Learn more about this purple button"
                 />
     
-                <View style={{ height: SWIPER_HEIGHT  }}>
-                    <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-                    <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-                    <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-                    <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-                    <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-                    <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-                    <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-                    <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-                    <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-                    <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-                    <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-                    <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-                    <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-                    <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-                    <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-                    <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-                    <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-                    <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-                    <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-                    <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-                    <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-                    <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-                    <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-                    <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-                    <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-                    <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
-                    <Text>춘천가는 기차는 나를 데리고 가네~ :D</Text>
+                <View >
+                    <Text>Test...</Text>
+                    <Text>Test...</Text>
+                    <Text>Test...</Text>
+                    <Text>Test...</Text>
+                    <Text>Test...</Text>
+                    <Text>Test...</Text>
+                    <Text>Test...</Text>
+                    <Text>Test...</Text>
+                    <Text>Test...</Text>
+                    <Text>Test...</Text>
+                    <Text>Test...</Text>
+                    <Text>Test...</Text>
                 </View>
-                
+
             </LinearGradient>
             </ScrollView>
         )
@@ -143,7 +108,7 @@ export default class Activity2 extends Component{
 
 const styles = StyleSheet.create( {
     layoutStyle : {
-        flex: 1
+        flex: 1,
     },
     swiperStyle : {
         flex: 1,
